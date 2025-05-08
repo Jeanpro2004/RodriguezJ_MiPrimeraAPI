@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using RodriguezJ_MiPrimeraAPI.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<RodriguezJ_MiPrimeraAPIContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RodriguezJ_MiPrimeraAPIContext") ?? throw new InvalidOperationException("Connection string 'RodriguezJ_MiPrimeraAPIContext' not found.")));
 
 // Add services to the container.
 
